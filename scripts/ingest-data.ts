@@ -22,7 +22,7 @@ const processDirectory = async (directoryPath: any) => {
 
       if (stats.isDirectory()) {
         await processDirectory(itemPath);
-      } else if (stats.isFile() && path.extname(itemPath) === '.adoc') {
+      } else if (stats.isFile() && path.extname(itemPath) === '.cairo') {
         console.log(`Processing file: ${itemPath}`);
         await run(itemPath);
         console.log('Ingestion complete for', itemPath);
@@ -72,7 +72,7 @@ export const run = async (filePath: string) => {
 };
 
 (async () => {
-  const rootDirectoryPath = '/home/os/Documents/GPT/starknet-docs'
+  const rootDirectoryPath = '/home/os/Documents/GPT/starklings'
   await processDirectory(rootDirectoryPath);
   console.log('ingestion complete');
 })();

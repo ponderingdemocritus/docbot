@@ -157,7 +157,7 @@ export default function Home() {
         )
         .replace('.md', '');
     } else if (str.includes('starknet-docs')) {
-      return "https://docs.starknet.io/documentation"
+      return 'https://docs.starknet.io/documentation';
     } else {
       return str;
     }
@@ -244,15 +244,17 @@ export default function Home() {
           </h1>
           <main
             className={
-              'rounded-lg bg-gray-900/50  flex flex-col container mx-auto' 
+              'rounded-lg bg-gray-900/50  flex flex-col container mx-auto'
             }
           >
-            <div className={'rounded-lg overflow-y-auto h-96'}>
+            <div className={'rounded-lg overflow-y-auto'}>
               <div ref={messageListRef} className={'rounded-lg'}>
                 {chatMessages.map((message, index) => {
+                  const bot = message.type === 'apiMessage';
+
                   let icon;
                   let className;
-                  if (message.type === 'apiMessage') {
+                  if (bot) {
                     icon = (
                       <Image
                         src="/starknet.png"
@@ -283,9 +285,14 @@ export default function Home() {
                   }
                   return (
                     <>
-                      <div key={index} className={'bg-gray-900/10 p-8  flex'}>
+                      <div
+                        key={index}
+                        className={`p-8  flex ${
+                          bot ? 'bg-gray-900/10' : 'bg-gray-300/10'
+                        } `}
+                      >
                         {icon}
-                        <div className={styles.markdownanswer + " self-center"}>
+                        <div className={styles.markdownanswer + ' self-center'}>
                           <ReactMarkdown linkTarget="_blank">
                             {message.message}
                           </ReactMarkdown>
@@ -347,8 +354,13 @@ export default function Home() {
                     </Accordion>
                   </div>
                 )}
+                <div>
+
+                </div>
+                {loading && <div className='p-8'><LoadingDots color="#fff" style='large' /></div> }
               </div>
             </div>
+            
             <div className={'p-4 bg-gray-500/20 rounded-b-xl'}>
               <div className={styles.cloudform}>
                 <form onSubmit={handleSubmit}>
@@ -399,7 +411,8 @@ export default function Home() {
         </div>
         <footer className="m-auto">
           <a href="https://twitter.com/mayowaoshin">
-            Powered by LangChainAI. Demo built by Mayo (Twitter: @mayowaoshin) forked by @lordofafew.
+            Powered by LangChainAI. Demo built by Mayo (Twitter: @mayowaoshin)
+            forked by @lordofafew.
           </a>
         </footer>
       </Layout>
