@@ -166,7 +166,7 @@ export default function Home() {
   return (
     <>
       <Layout>
-        <div className="mx-auto flex flex-col gap-4 text-white">
+        <div className="mx-auto flex flex-col gap-4 text-white container">
           <h1 className="text-2xl font-bold leading-[1.1] tracking-tighter text-center mx-auto">
             <svg
               height="40"
@@ -244,10 +244,10 @@ export default function Home() {
           </h1>
           <main
             className={
-              'rounded-lg bg-gray-900/50 sm:w-1/2 mx-auto flex flex-col'
+              'rounded-lg bg-gray-900/50  flex flex-col container mx-auto' 
             }
           >
-            <div className={'rounded-lg overflow-y-scroll h-96'}>
+            <div className={'rounded-lg overflow-y-auto h-96'}>
               <div ref={messageListRef} className={'rounded-lg'}>
                 {chatMessages.map((message, index) => {
                   let icon;
