@@ -255,7 +255,7 @@ export default function Home() {
                   if (message.type === 'apiMessage') {
                     icon = (
                       <Image
-                        src="/bot-image.png"
+                        src="/starknet.png"
                         alt="AI"
                         width="40"
                         height="40"
@@ -269,8 +269,8 @@ export default function Home() {
                       <Image
                         src="/usericon.png"
                         alt="Me"
-                        width="30"
-                        height="30"
+                        width="40"
+                        height="40"
                         className={styles.usericon}
                         priority
                       />
@@ -283,9 +283,9 @@ export default function Home() {
                   }
                   return (
                     <>
-                      <div key={index} className={'bg-gray-900/50 p-8  flex'}>
+                      <div key={index} className={'bg-gray-900/10 p-8  flex'}>
                         {icon}
-                        <div className={styles.markdownanswer}>
+                        <div className={styles.markdownanswer + " self-center"}>
                           <ReactMarkdown linkTarget="_blank">
                             {message.message}
                           </ReactMarkdown>
@@ -349,7 +349,7 @@ export default function Home() {
                 )}
               </div>
             </div>
-            <div className={'p-4'}>
+            <div className={'p-4 bg-gray-500/20 rounded-b-xl'}>
               <div className={styles.cloudform}>
                 <form onSubmit={handleSubmit}>
                   <textarea
