@@ -16,10 +16,12 @@ yarn gen /cairo .cairo
 // load into pinecone
 yarn ingest
 
-yarn gen /cairo .cairo
-
 ```
 
+```
+// talk to the bot
+yarn dev
+```
 
 ## Development
 
@@ -45,4 +47,11 @@ OPENAI_API_KEY=
 PINECONE_API_KEY=
 PINECONE_ENVIRONMENT=
 
+```
+
+If running Node 17 or less you will need to:
+
+```
+export NODE_TLS_REJECT_UNAUTHORIZED='0'
+export NODE_OPTIONS='--experimental-fetch'
 ```

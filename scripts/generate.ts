@@ -3,9 +3,7 @@
 import fs from 'fs';
 import path from 'path';
 import frontMatter from 'front-matter';
-// const frontMatter = require('front-matter');
 
-const mdDirPath = '/home/os/Documents/dojo/dojo/lib/src'; // Replace this with your desired markdown files directory
 const outputPath = './output.json'; // Replace this with your desired output file path
 
 function readDir(dirPath: string) {
