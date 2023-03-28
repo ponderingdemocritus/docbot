@@ -1,14 +1,25 @@
-# GPT-4 & LangChain - Create a ChatGPT Chatbot for Your PDF Docs
+# GPT-4 & LangChain - GPT Chatbot trained on your docs
 
-Use the new GPT-4 api to build a chatGPT chatbot for Large PDF docs (56 pages used in this example).
+Thanks to the OG Mayooear<twitter:@mayowaoshin> for the original repo
 
-Tech stack used includes LangChain, Pinecone, Typescript, Openai, and Next.js. LangChain is a framework that makes it easier to build scalable AI/LLM apps and chatbots. Pinecone is a vectorstore for storing embeddings and your PDF in text to later retrieve similar docs.
+Firstly generates docs from any file type and saves in a Document json. Then uploads to a pinecone db where you can then talk with the bot.
 
-[Tutorial video](https://www.youtube.com/watch?v=ih9PBGVVOO4)
+```
+// generate .md files from directory and output document files
+yarn gen <directory path> <file name>
 
-[Get in touch via twitter if you have questions](https://twitter.com/mayowaoshin)
+yarn gen /cairo .cairo
 
-The visual guide of this repo and tutorial is in the `visual guide` folder.
+```
+
+```
+// load into pinecone
+yarn ingest
+
+yarn gen /cairo .cairo
+
+```
+
 
 ## Development
 
