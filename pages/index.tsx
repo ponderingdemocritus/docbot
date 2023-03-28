@@ -409,10 +409,10 @@ export default function Home() {
             </div>
           </main>
         </div>
-        <footer className="m-auto">
+        <footer className="m-auto text-white mt-4">
           <a href="https://twitter.com/mayowaoshin">
-            Powered by LangChainAI. Demo built by Mayo (Twitter: @mayowaoshin)
-            forked by @lordofafew.
+            Powered by LangChainAI. Demo built by Mayo (Twitter: <a href="https://twitter.com/mayowaoshin">@mayowaoshin</a>)
+            forked by <a href="https://twitter.com/lordOfAFew">@lordofafew</a> .
           </a>
         </footer>
       </Layout>

@@ -2,9 +2,10 @@ import { RecursiveCharacterTextSplitter } from 'langchain/text_splitter';
 import { OpenAIEmbeddings } from 'langchain/embeddings';
 import { PineconeStore } from 'langchain/vectorstores';
 import { pinecone } from '@/utils/pinecone-client';
-// import { PDFLoader } from 'langchain/document_loaders';
+import { PDFLoader } from 'langchain/document_loaders';
 import { PINECONE_INDEX_NAME, PINECONE_NAME_SPACE } from '@/config/pinecone';
 import { TextLoader } from "langchain/document_loaders";
+import { GitbookLoader } from "langchain/document_loaders";
 
 import fs from 'fs';
 import path from 'path';
@@ -22,7 +23,7 @@ const processDirectory = async (directoryPath: any) => {
 
       if (stats.isDirectory()) {
         await processDirectory(itemPath);
-      } else if (stats.isFile() && path.extname(itemPath) === '.cairo') {
+      } else if (stats.isFile() && path.extname(itemPath) === '.pdf') {
         console.log(`Processing file: ${itemPath}`);
         await run(itemPath);
         console.log('Ingestion complete for', itemPath);
@@ -36,9 +37,13 @@ const processDirectory = async (directoryPath: any) => {
 
 export const run = async (filePath: string) => {
   try {
+
+    // const loader = new GitbookLoader("https://docs.loot.foundation", {
+    //   shouldLoadAllPaths: true,
+    // });
     /*load raw docs from the pdf file in the directory */
-    // const loader = new PDFLoader(filePath);
-    const loader = new TextLoader(filePath);
+    const loader = new PDFLoader(filePath);
+    // const loader = new TextLoader(filePath);
     // const loader = new PDFLoader(filePath);
     const rawDocs = await loader.load();
 
@@ -72,7 +77,9 @@ export const run = async (filePath: string) => {
 };
 
 (async () => {
-  const rootDirectoryPath = '/home/os/Documents/GPT/starklings'
-  await processDirectory(rootDirectoryPath);
+  // const rootDirectoryPath = '/home/os/Documents/GPT/starklings'
+  await processDirectory('/home/os/Desktop/Done');
+
+  // await run('/home/os/Desktop/Starknet Alpha v0.11.0: The Transition t.txt');
   console.log('ingestion complete');
 })();
