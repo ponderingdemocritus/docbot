@@ -1,21 +1,20 @@
-# GPT-4 & LangChain - GPT Chatbot trained on your docs
+# Generate docs with GPT then discuss
 
-Thanks to the OG Mayooear<twitter:@mayowaoshin> for the original repo
+Thanks to the OG Mayooear<twitter:@mayowaoshin> for the original repo.
 
-Firstly generates docs from any file type and saves in a Document json. Then uploads to a pinecone db where you can then talk with the bot.
+This repo allows you to generate .md docs from any file type which then can be uploaded into a pinecone db for questions. The preprocess of generating the .md files is essential for the vector db fetching.
 
 ```
 // generate .md files from directory and output document files
 yarn gen <directory path> <file name>
 
 yarn gen /cairo .cairo
-
 ```
 
 ```
 // load into pinecone
+// This part is manual, you can freely adjust the document loaders to your liking.
 yarn ingest
-
 ```
 
 ```
@@ -41,7 +40,6 @@ pnpm install
 
 - Copy `.env.example` into `.env`
   Your `.env` file should look like this:
-
 ```
 OPENAI_API_KEY=
 PINECONE_API_KEY=

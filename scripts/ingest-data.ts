@@ -10,9 +10,6 @@ import { GitbookLoader } from "langchain/document_loaders";
 import fs from 'fs';
 import path from 'path';
 
-/* Name of directory to retrieve files from. You can change this as required */
-// const filePath = 'docs/230310130.pdf';
-
 const processDirectory = async (directoryPath: any) => {
   try {
     const items = await fs.promises.readdir(directoryPath);
